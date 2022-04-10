@@ -1,16 +1,16 @@
-import Head from "next/head";
-import "tailwindcss/tailwind.css";
+import { SessionProvider } from 'next-auth/react'
+import Head from 'next/head'
+import 'tailwindcss/tailwind.css'
 
-
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <>
+    <SessionProvider session={session}>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <Component {...pageProps} />
-    </>
-  );
+    </SessionProvider>
+  )
 }
 
-export default MyApp;
+export default App
